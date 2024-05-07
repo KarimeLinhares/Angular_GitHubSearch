@@ -1,0 +1,11 @@
+<input
+  type="text"
+  [(ngModel)]="username"
+  (ngModelChange)="fetchUserProfile()"
+/>
+<div *ngIf="userProfileData">
+  <h2>{{ userProfileData.name }}</h2>
+  <p>{{ userProfileData.bio }}</p>
+</div>
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error">Error: {{ error.message }}</div>
