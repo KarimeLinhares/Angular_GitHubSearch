@@ -4,8 +4,17 @@
   (ngModelChange)="fetchUserProfile()"
 />
 <div *ngIf="userProfileData">
+  <img [src]="userProfileImageUrl" *ngIf="userProfileImageUrl" />
   <h2>{{ userProfileData.name }}</h2>
   <p>{{ userProfileData.bio }}</p>
+</div>
+<div *ngIf="techStack$ | async as techStack">
+  <h3>Tech Stack</h3>
+  <ul>
+    <li *ngFor="let tech of techStack | keyvalue">
+      {{ tech.key }}
+    </li>
+  </ul>
 </div>
 <div *ngIf="loading">Loading...</div>
 <div *ngIf="error">Error: {{ error.message }}</div>

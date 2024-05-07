@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class UserProfileComponent implements OnInit {
   //propriedade do tipo observable, que irá armazenar o observado retornado pelo service ao buscar os dados de perfil do usuário
   userProfile$: Observable<any>;
+  techStack$: Observable<any>;
   //propriedade que irá guardar os dados reais retornados da chamada da API do GitHub
   userProfileData: any;
   //propriedade que rastreia se o componente está fazendo load dos dados
@@ -18,6 +19,8 @@ export class UserProfileComponent implements OnInit {
   error: any;
   //propriedade que vai armazenar o valor do input
   username: string;
+  //propriedade que vai armazenar a url da imagem de perfil do usuário
+  userProfileImageUrl: string;
 
   constructor(private githubService: GithubService) {}
 
@@ -25,6 +28,7 @@ export class UserProfileComponent implements OnInit {
     //setando um username default, e buscando os dados dele
     this.username = 'karimelinhares';
     this.fetchUserProfile();
+    this.fetchUserTechStack();
   }
 
   //componente que busca os dados do perfil do usuário do GitHub usando o GithubService e os exibe no modelo.
@@ -35,11 +39,18 @@ export class UserProfileComponent implements OnInit {
       (response) => {
         this.loading = false;
         this.userProfileData = response;
+        this.userProfileImageUrl = response.avatar_url;
       },
       (error) => {
         this.loading = false;
         this.error = error;
       }
     );
+  }
+
+  fetchUserTechStack(): void {
+    this.githubService.getUserRepos(this.username).subscribe((repos) => {
+      this.techStack$ = this.githubService.getUserTechStack(repos);
+    });
   }
 }

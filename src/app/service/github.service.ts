@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +15,9 @@ export class GithubService {
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });
+  //propriedade que armazena a URL da API do GitHub para buscar os dados do usuário
+  private userProfileUrl = `${this.apiUrl}/users/{username}`;
+
   constructor(private http: HttpClient) {}
 
   //Definindo um método que recebe um único parâmetro username do tipo string.
@@ -24,5 +27,33 @@ export class GithubService {
     return this.http.get(`${this.apiUrl}/users/${username}`, {
       headers: this.headers,
     });
+  }
+
+  //método que usa a propriedade "userProfileUrl" e adiciona o sufixo "/avatar_url" para formar a URL completa da imagem de perfil do usuário
+  //retorna um observable que emite a URL da imagem de perfil do usuário quando a solicitação é concluída com sucesso
+  getUserProfileImage(userProfile: any): Observable<string> {
+    return of(userProfile.avatar_url);
+  }
+
+  //método busca os repositórios do usuário na API do GitHub
+  getUserRepos(username: string): Observable<any> {
+    return this.http.get(`https://api.github.com/users/${username}/repos`);
+  }
+
+  //método analisa as tecnologias usadas nesses repositórios e retorna um objeto que mapeia cada tecnologia para o número de repositórios que a utilizam
+  getUserTechStack(repos: any[]): Observable<any> {
+    const techStack: { [key: string]: number } = {};
+
+    repos.forEach((repo) => {
+      if (repo.language) {
+        techStack[repo.language] = (techStack[repo.language] || 0) + 1;
+      }
+      if (repo.topics) {
+        repo.topics.forEach((topic) => {
+          techStack[topic] = (techStack[topic] || 0) + 1;
+        });
+      }
+    });
+    return of(techStack);
   }
 }
