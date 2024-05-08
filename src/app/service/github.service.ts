@@ -9,14 +9,15 @@ export class GithubService {
   //Configurando propriedade privada apiUrl para a URL base da API do Github.
   //Esta URL será utilizada como a URL base para todas as requisições de API feitas por este serviço
   private apiUrl = 'https://api.github.com';
+  //chave de autorização (vence dia 14/05/2024 )
+  private authToken = `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`;
   //Configurando propriedade privada "headers" como uma nova instância de HttpHeader.
   //O objeto HttpHeaders é inicializado com um único cabeçalho, "Content-Type", definido como "application/json".
   //Este cabeçalho especifica que o corpo da requisição deve ser enviado no formato JSON.
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${this.authToken}`,
   });
-  //propriedade que armazena a URL da API do GitHub para buscar os dados do usuário
-  private userProfileUrl = `${this.apiUrl}/users/{username}`;
 
   constructor(private http: HttpClient) {}
 

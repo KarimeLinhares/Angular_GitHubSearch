@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { GithubService } from './../../service/github.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class UserProfileComponent implements OnInit {
   //propriedade do tipo observable, que irá armazenar o observado retornado pelo service ao buscar os dados de perfil do usuário
   userProfile$: Observable<any>;
+  //propriedade do tipo observable, que irá conter os dados da pilha de tecnologias
   techStack$: Observable<any>;
+  topTechs$: Observable<any>;
   //propriedade que irá guardar os dados reais retornados da chamada da API do GitHub
   userProfileData: any;
   //propriedade que rastreia se o componente está fazendo load dos dados
@@ -25,7 +27,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private githubService: GithubService) {}
 
   ngOnInit(): void {
-    //setando um username default, e buscando os dados dele
+    //setando um username default, e startando os dados dele
     this.username = 'karimelinhares';
     this.fetchUserProfile();
     this.fetchUserTechStack();
