@@ -1,5 +1,6 @@
 import { Observable, of } from 'rxjs';
 import { GithubService } from './../../service/github.service';
+import { FavoritesService } from 'src/app/service/favorites.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -23,14 +24,22 @@ export class UserProfileComponent implements OnInit {
   username: string;
   //propriedade que vai armazenar a url da imagem de perfil do usuário
   userProfileImageUrl: string;
+  isFavorite: boolean;
 
-  constructor(private githubService: GithubService) {}
+  constructor(
+    private githubService: GithubService,
+    private favoritesService: FavoritesService
+  ) {}
 
   ngOnInit(): void {
     //setando um username default, e startando os dados dele
     this.username = 'karimelinhares';
     this.fetchUserProfile();
     this.fetchUserTechStack();
+    //faz a checagem dos perfis favoritados
+    this.isFavorite = this.favoritesService.isFavorite(
+      this.userProfileData.login
+    );
   }
 
   //componente que busca os dados do perfil do usuário do GitHub usando o GithubService e os exibe no modelo.
@@ -54,5 +63,16 @@ export class UserProfileComponent implements OnInit {
     this.githubService.getUserRepos(this.username).subscribe((repos) => {
       this.techStack$ = this.githubService.getUserTechStack(repos);
     });
+  }
+
+  toggleFavorite(): void {
+    const userProfileData = this.userProfileData;
+    if (this.isFavorite) {
+      this.favoritesService.removeFavorite(userProfileData.login);
+      this.isFavorite = false;
+    } else {
+      this.favoritesService.addFavorite(userProfileData.login);
+      this.isFavorite = true;
+    }
   }
 }
