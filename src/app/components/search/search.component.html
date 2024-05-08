@@ -1,1 +1,22 @@
-<app-user-profile></app-user-profile>
+<input
+  type="text"
+  [(ngModel)]="username"
+  (ngModelChange)="fetchUserProfile()"
+/>
+<div *ngIf="userProfileData">
+  <img [src]="userProfileImageUrl" *ngIf="userProfileImageUrl" />
+  <h2>{{ userProfileData.name }}</h2>
+  <!-- Add a heart button to the profile -->
+  <button mat-icon-button (click)="toggleFavorite()">
+    <mat-icon>{{ isFavorite ? "favorite" : "favorite_border" }}</mat-icon>
+  </button>
+  <p>{{ userProfileData.bio }}</p>
+  <div *ngIf="techStack$ | async as techStack">
+    <h3>Tech Stack</h3>
+    <ul>
+      <li *ngFor="let tech of techStack | keyvalue">
+        {{ tech.key }}
+      </li>
+    </ul>
+  </div>
+</div>
