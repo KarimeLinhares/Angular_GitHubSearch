@@ -5,16 +5,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './components/search/search.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FooterComponent } from './components/footer/footer.component';
     SearchComponent,
     UserProfileComponent,
     FooterComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,11 +34,11 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatInputModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
