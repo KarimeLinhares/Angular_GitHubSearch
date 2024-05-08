@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './components/search/search.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     HomeComponent,
     SearchComponent,
     UserProfileComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
