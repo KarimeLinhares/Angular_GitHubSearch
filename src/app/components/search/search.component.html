@@ -1,8 +1,12 @@
-<input
-  type="text"
-  [(ngModel)]="username"
-  (ngModelChange)="fetchUserProfile()"
-/>
+<div class="search-input">
+  <input
+    matInput
+    type="text"
+    [(ngModel)]="username"
+    (ngModelChange)="fetchUserProfile()"
+  />
+</div>
+
 <mat-card class="card">
   <div *ngIf="userProfileData">
     <mat-card-header>
