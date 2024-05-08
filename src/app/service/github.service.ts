@@ -10,7 +10,7 @@ export class GithubService {
   //Esta URL será utilizada como a URL base para todas as requisições de API feitas por este serviço
   private apiUrl = 'https://api.github.com';
   //chave de autorização (vence dia 14/05/2024 )
-  private authToken = `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`;
+  private authToken = ``;
   //Configurando propriedade privada "headers" como uma nova instância de HttpHeader.
   //O objeto HttpHeaders é inicializado com um único cabeçalho, "Content-Type", definido como "application/json".
   //Este cabeçalho especifica que o corpo da requisição deve ser enviado no formato JSON.
