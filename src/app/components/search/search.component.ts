@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { GithubService } from './../../service/github.service';
 import { FavoritesService } from 'src/app/service/favorites.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,22 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  //propriedade do tipo observable, que irá armazenar o observado retornado pelo service ao buscar os dados de perfil do usuário
   userProfile$: Observable<any>;
-  //propriedade do tipo observable, que irá conter os dados da pilha de tecnologias
   techStack$: Observable<any>;
   topTechs$: Observable<any>;
-  //propriedade que irá guardar os dados reais retornados da chamada da API do GitHub
   userProfileData: any;
-  //propriedade que rastreia se o componente está fazendo load dos dados
-  loading: boolean;
-  //propriedade usada para armazenar erros
   error: any;
-  //propriedade que vai armazenar o valor do input
-  username: string;
-  //propriedade que vai armazenar a url da imagem de perfil do usuário
-  userProfileImageUrl: string;
+  loading: boolean;
   isFavorite: boolean;
+  username: string;
+  userProfileImageUrl: string;
+  searchQuery: string;
+  searchResults$: Observable<any[]>;
 
   constructor(
     private githubService: GithubService,
@@ -32,25 +27,21 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //setando um username default, e startando os dados dele
     this.username = 'karimelinhares';
     this.fetchUserProfile();
     this.fetchUserTechStack();
-    //faz a checagem dos perfis favoritados
-    this.isFavorite = this.favoritesService.isFavorite(
-      this.userProfileData.login
-    );
+    this.searchQuery = '';
   }
 
-  //componente que busca os dados do perfil do usuário do GitHub usando o GithubService e os exibe no modelo.
-  //também lida com os estados de carregamento e erro.
   fetchUserProfile(): void {
     this.userProfile$ = this.githubService.getUserProfile(this.username);
     this.userProfile$.subscribe(
       (response) => {
         this.loading = false;
         this.userProfileData = response;
+        console.log(response);
         this.userProfileImageUrl = response.avatar_url;
+        this.fetchUserTechStack();
       },
       (error) => {
         this.loading = false;
@@ -61,18 +52,31 @@ export class SearchComponent implements OnInit {
 
   fetchUserTechStack(): void {
     this.githubService.getUserRepos(this.username).subscribe((repos) => {
-      this.techStack$ = this.githubService.getUserTechStack(repos);
+      const techStackMap = new Map<string, number>();
+      repos.forEach((repo) => {
+        const languages = repo.language ? repo.language.split(',') : [];
+        languages.forEach((language) => {
+          const lowerCaseLanguage = language.toLowerCase().trim();
+          if (techStackMap.has(lowerCaseLanguage)) {
+            techStackMap.set(
+              lowerCaseLanguage,
+              techStackMap.get(lowerCaseLanguage) + 1
+            );
+          } else {
+            techStackMap.set(lowerCaseLanguage, 1);
+          }
+        });
+      });
+
+      const sortedTechStack = Array.from(techStackMap.entries()).sort(
+        (a, b) => b[1] - a[1]
+      );
+      this.topTechs$ = of(sortedTechStack.slice(0, 5));
     });
   }
 
-  toggleFavorite(): void {
-    const userProfileData = this.userProfileData;
-    if (this.isFavorite) {
-      this.favoritesService.removeFavorite(userProfileData.login);
-      this.isFavorite = false;
-    } else {
-      this.favoritesService.addFavorite(userProfileData.login);
-      this.isFavorite = true;
-    }
+  navigateToUserProfile(): void {
+    const url = `/user/${this.userProfileData.id}`;
+    window.location.href = url;
   }
 }

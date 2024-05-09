@@ -19,11 +19,16 @@ input:hover {
 .card {
   max-width: 200px;
   margin: auto;
+  margin-bottom: 24px;
+}
+
+.card > a {
+  text-decoration: none;
+  color: black;
 }
 
 mat-card {
   background-color: #fff;
-  color: black;
   border: 1px solid #ebe3d5;
 }
 
@@ -34,6 +39,45 @@ mat-card-header {
   justify-content: center;
 }
 
-mat-card-title > h2 {
+mat-card-title > a > h2 {
+  color: black;
   font-size: 18px;
+  margin: 0;
+  cursor: pointer;
+}
+mat-card-title > p {
+  color: black;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+mat-card-content > p {
+  color: black;
+}
+
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button {
+  color: black;
+}
+
+.stacks-container {
+  color: black;
+}
+
+.stacks > ul {
+  padding: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.stacks > ul > li {
+  list-style: none;
+  width: 70px;
+  border: 1px solid black;
+  border-radius: 16px;
+  margin: 5px;
 }
