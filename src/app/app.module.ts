@@ -16,6 +16,7 @@ import { SearchComponent } from './components/search/search.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HeaderComponent } from './components/header/header.component';
     UserProfileComponent,
     FooterComponent,
     HeaderComponent,
+    InputComponent,
   ],
   imports: [
     BrowserModule,
