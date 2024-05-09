@@ -5,7 +5,97 @@
   placeholder="Coloque o @ do usuário aqui"
 ></app-input>
 
-<mat-card class="card">
+<div class="container">
+  <div class="row">
+    <div class="card-a">
+      <img class="card-img-top" [src]="userProfileImageUrl" alt="My Image" />
+      <div class="card-body">
+        <p class="card-text">
+          Nome:<span> {{ userProfileData.name }}</span>
+        </p>
+        <p>
+          Username:<span> {{ userProfileData.login }}</span>
+        </p>
+        <div class="joined">
+          <p>Usuário desde:</p>
+          <div class="badge">
+            <span>{{ userProfileData.created_at | date }}</span>
+          </div>
+        </div>
+        <div class="follow">
+          <p>
+            👤<span>{{ userProfileData.followers }}</span> Seguidores
+          </p>
+          <p>
+            👤<span>{{ userProfileData.following }}</span> Seguindo
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cards-container">
+    <div class="card">
+      <ul class="items">
+        <li class="list-group-item">
+          Nome: <span>{{ userProfileData.name }}</span>
+        </li>
+        <hr />
+        <li class="list-group-item">
+          Endereço: <span>{{ userProfileData.location }}</span>
+        </li>
+        <hr />
+        <div class="repos">
+          <li class="list-group-item">Repositórios Públicos:</li>
+          <div class="badge">
+            <span>{{ userProfileData.public_repos }}</span>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div class="card">
+      <ul class="items">
+        <li class="list-group-item">About me</li>
+        <hr />
+        <li class="list-group-item">
+          <p>{{ userProfileData.bio }}</p>
+        </li>
+      </ul>
+    </div>
+    <div class="card">
+      <ul class="items">
+        <li class="list-group-item">Stacks mais usadas</li>
+        <li class="list-group-item">
+          <div *ngIf="topTechs$ | async as topTechs" class="stacks-container">
+            <div class="stacks">
+              <ul>
+                <li *ngFor="let tech of topTechs">{{ tech[0] }}</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="card">
+      <ul class="items">
+        <li class="list-group-item">Github</li>
+        <hr />
+        <li class="list-group-item">
+          <div class="gitbtn">
+            <a
+              class="btn"
+              href="https://github.com/{{ userProfileData.login }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Github
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- <mat-card class="card">
   <div *ngIf="userProfileData">
     <mat-card-header>
       <mat-card-actions>
@@ -21,6 +111,7 @@
       </mat-card-title>
     </mat-card-header>
     <img
+      class="card-img"
       mat-card-image
       [src]="userProfileImageUrl"
       *ngIf="userProfileImageUrl"
@@ -37,4 +128,4 @@
       </div>
     </div>
   </div>
-</mat-card>
+</mat-card> -->

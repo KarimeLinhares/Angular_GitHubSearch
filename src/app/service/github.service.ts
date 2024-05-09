@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -44,16 +43,5 @@ export class GithubService {
       }
     });
     return of(techStack);
-  }
-
-  searchUsers(query: string): Observable<any[]> {
-    const url = `${this.apiUrl}/users?q=${query}&per_page=9`;
-    return this.http.get(url).pipe(
-      map((response: any) => response.items),
-      catchError((error: any) => {
-        console.error(error);
-        return of([]);
-      })
-    );
   }
 }

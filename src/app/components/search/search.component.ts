@@ -1,4 +1,4 @@
-import { Observable, of } from 'rxjs';
+import { Observable, of, fromEvent } from 'rxjs';
 import { GithubService } from './../../service/github.service';
 import { FavoritesService } from 'src/app/service/favorites.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,14 +12,13 @@ export class SearchComponent implements OnInit {
   userProfile$: Observable<any>;
   techStack$: Observable<any>;
   topTechs$: Observable<any>;
+  searchResult$: Observable<any>;
   userProfileData: any;
   error: any;
   loading: boolean;
   isFavorite: boolean;
   username: string;
   userProfileImageUrl: string;
-  searchQuery: string;
-  searchResults$: Observable<any[]>;
 
   constructor(
     private githubService: GithubService,
@@ -30,7 +29,6 @@ export class SearchComponent implements OnInit {
     this.username = 'karimelinhares';
     this.fetchUserProfile();
     this.fetchUserTechStack();
-    this.searchQuery = '';
   }
 
   fetchUserProfile(): void {
@@ -76,7 +74,7 @@ export class SearchComponent implements OnInit {
   }
 
   navigateToUserProfile(): void {
-    const url = `/user/${this.userProfileData.id}`;
+    const url = `/u/${this.userProfileData.id}`;
     window.location.href = url;
   }
 }

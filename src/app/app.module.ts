@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './components/search/search.component';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InputComponent } from './components/input/input.component';
@@ -23,7 +22,6 @@ import { InputComponent } from './components/input/input.component';
     AppComponent,
     HomeComponent,
     SearchComponent,
-    UserProfileComponent,
     FooterComponent,
     HeaderComponent,
     InputComponent,

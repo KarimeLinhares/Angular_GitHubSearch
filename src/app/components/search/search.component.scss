@@ -1,64 +1,138 @@
-.search-input {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-
-input {
-  border-radius: 24px;
-  padding: 0.8rem;
-  min-width: 35rem;
-  font-size: 18px;
-}
-
-input:hover {
-  outline: none;
-  box-shadow: 0 0 0 3px black;
-}
-
-.card {
-  max-width: 200px;
-  margin: auto;
-  margin-bottom: 24px;
-}
-
-.card > a {
-  text-decoration: none;
-  color: black;
-}
-
-mat-card {
-  background-color: #fff;
-  border: 1px solid #ebe3d5;
-}
-
-mat-card-header {
+.container {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  padding-bottom: 80px;
 }
 
-mat-card-title > a > h2 {
-  color: black;
+.row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-a {
+  height: 580px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card,
+.card-a {
+  width: 400px;
+  background: #fff none repeat scroll 0 0;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 11px 5px rgb(103 58 183 / 10%);
+  padding: 20px 10px;
+  margin: 10px 0 10px 0;
+}
+
+.card:hover,
+.card-a:hover {
+  box-shadow: 0 0 11px 5px rgba(70, 41, 121, 0.25);
+  background: linear-gradient(-19deg, rgba(235, 174, 8, 0.95) 0px);
+}
+
+.card-body {
+  margin: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 24px;
+}
+
+.card-text a {
+  color: rgb(87, 87, 87);
+  text-align: center;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.card-img-top {
+  border-radius: 50%;
+  display: block;
+  float: none;
+  height: 215px;
+  line-height: 32px;
+  margin: 0 auto;
+  width: 215px;
+  margin-top: 6px;
+}
+
+.follow {
+  justify-content: space-evenly;
+}
+
+.btn {
+  background-color: rgb(10, 25, 47);
+  color: #fff;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.gitbtn {
+  margin-top: 12px;
+}
+
+.items > li {
+  margin: 6px;
+}
+
+.items > hr {
+  color: #dfdfdf;
+}
+
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(10, 25, 47);
+}
+
+.card,
+.card-a {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.joined {
+  display: flex;
+}
+
+.badge > span {
+  background-color: #ffc107;
+  border-radius: 24px;
+  padding: 7px;
+  margin: 2px;
+}
+
+.repos {
+  margin-top: 12px;
+  display: flex;
+}
+
+.float-right {
+  text-align: center;
+}
+
+.card-repo {
+  font-family: "Poppins";
   font-size: 18px;
-  margin: 0;
-  cursor: pointer;
-}
-mat-card-title > p {
-  color: black;
-  font-size: 12px;
-  font-weight: 100;
-}
-
-mat-card-content > p {
-  color: black;
-}
-
-.mat-button,
-.mat-icon-button,
-.mat-stroked-button {
-  color: black;
 }
 
 .stacks-container {
@@ -76,8 +150,91 @@ mat-card-content > p {
 }
 .stacks > ul > li {
   list-style: none;
-  width: 70px;
+  width: 100px;
   border: 1px solid black;
   border-radius: 16px;
   margin: 5px;
 }
+
+// .search-input {
+//   display: flex;
+//   justify-content: center;
+//   margin: 20px;
+// }
+
+// input {
+//   border-radius: 24px;
+//   padding: 0.8rem;
+//   min-width: 35rem;
+//   font-size: 18px;
+// }
+
+// input:hover {
+//   outline: none;
+//   box-shadow: 0 0 0 3px black;
+// }
+
+// .card {
+//   background: #fff none repeat scroll 0 0;
+//   border: 2px solid #fff;
+//   border-radius: 5px;
+//   box-shadow: 0 0 11px 5px rgb(103 58 183 / 10%);
+//   margin-bottom: 30px;
+//   padding: 20px 10px;
+//   margin-top: 30px;
+// }
+
+// .card:hover {
+//   box-shadow: 0 0 11px 5px rgba(70, 41, 121, 0.25);
+//   background: linear-gradient(-19deg, rgba(235, 174, 8, 0.95) 0px);
+// }
+
+// .card > a {
+//   text-decoration: none;
+//   color: black;
+// }
+
+// .card-img {
+//   border-radius: 50%;
+//   display: block;
+//   float: none;
+//   height: 215px;
+//   line-height: 32px;
+//   margin: 0 auto;
+//   width: 215px;
+//   margin-top: 6px;
+// }
+
+// mat-card {
+//   background-color: #fff;
+//   border: 1px solid #ebe3d5;
+// }
+
+// mat-card-header {
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// mat-card-title > a > h2 {
+//   color: black;
+//   font-size: 18px;
+//   margin: 0;
+//   cursor: pointer;
+// }
+// mat-card-title > p {
+//   color: black;
+//   font-size: 12px;
+//   font-weight: 100;
+// }
+
+// mat-card-content > p {
+//   color: black;
+// }
+
+// .mat-button,
+// .mat-icon-button,
+// .mat-stroked-button {
+//   color: black;
+// }
