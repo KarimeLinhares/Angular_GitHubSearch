@@ -10,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
   userProfile$: Observable<any>;
+  userRepos$: Observable<any[]>;
   techStack$: Observable<any>;
   topTechs$: Observable<any>;
   searchResult$: Observable<any>;
   userProfileData: any;
+  userProfileRepo: any;
   error: any;
   loading: boolean;
   isFavorite: boolean;
@@ -29,6 +31,7 @@ export class SearchComponent implements OnInit {
     this.username = 'karimelinhares';
     this.fetchUserProfile();
     this.fetchUserTechStack();
+    this.fetchUserRepos();
   }
 
   fetchUserProfile(): void {
@@ -40,6 +43,7 @@ export class SearchComponent implements OnInit {
         console.log(response);
         this.userProfileImageUrl = response.avatar_url;
         this.fetchUserTechStack();
+        this.fetchUserRepos();
       },
       (error) => {
         this.loading = false;
@@ -73,8 +77,18 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  navigateToUserProfile(): void {
-    const url = `/u/${this.userProfileData.id}`;
-    window.location.href = url;
+  fetchUserRepos(): void {
+    this.userRepos$ = this.githubService.getUserRepos(this.username);
+    this.userRepos$.subscribe(
+      (response) => {
+        this.loading = false;
+        this.userProfileRepo = response;
+        console.log(response);
+      },
+      (error) => {
+        this.loading = false;
+        this.error = error;
+      }
+    );
   }
 }

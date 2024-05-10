@@ -1,28 +1,20 @@
 .container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.container-user {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-bottom: 80px;
 }
 
-.row {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.card-a {
-  height: 580px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.card,
-.card-a {
+.card-user-a,
+.card-user-b {
   width: 400px;
   background: #fff none repeat scroll 0 0;
   border: 2px solid #fff;
@@ -30,37 +22,18 @@
   box-shadow: 0 0 11px 5px rgb(103 58 183 / 10%);
   padding: 20px 10px;
   margin: 10px 0 10px 0;
-}
-
-.card:hover,
-.card-a:hover {
-  box-shadow: 0 0 11px 5px rgba(70, 41, 121, 0.25);
-  background: linear-gradient(-19deg, rgba(235, 174, 8, 0.95) 0px);
-}
-
-.card-body {
-  margin: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-.cards-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: 24px;
-}
-
-.card-text a {
-  color: rgb(87, 87, 87);
-  text-align: center;
+  font-family: "Poppins";
   font-weight: 600;
-  text-decoration: none;
-  font-size: 16px;
+  font-size: 15px;
+}
+
+//card w photo
+.card-user-a {
+  height: 585px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-img-top {
@@ -74,19 +47,26 @@
   margin-top: 6px;
 }
 
-.follow {
-  justify-content: space-evenly;
+.card-body {
+  margin: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
-.btn {
-  background-color: rgb(10, 25, 47);
-  color: #fff;
-  padding: 8px;
-  border-radius: 8px;
+.join {
+  display: flex;
 }
 
-.gitbtn {
-  margin-top: 12px;
+//other cards
+.container-user-cards-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 24px;
 }
 
 .items > li {
@@ -97,42 +77,9 @@
   color: #dfdfdf;
 }
 
-h2 {
-  text-align: center;
-  text-transform: uppercase;
-  color: rgb(10, 25, 47);
-}
-
-.card,
-.card-a {
-  font-family: "Poppins";
-  font-weight: 600;
-  font-size: 15px;
-}
-
-.joined {
+.about-repos {
+  margin: 12px 6px 6px 6px;
   display: flex;
-}
-
-.badge > span {
-  background-color: #ffc107;
-  border-radius: 24px;
-  padding: 7px;
-  margin: 2px;
-}
-
-.repos {
-  margin-top: 12px;
-  display: flex;
-}
-
-.float-right {
-  text-align: center;
-}
-
-.card-repo {
-  font-family: "Poppins";
-  font-size: 18px;
 }
 
 .stacks-container {
@@ -154,6 +101,110 @@ h2 {
   border: 1px solid black;
   border-radius: 16px;
   margin: 5px;
+}
+
+.btn {
+  background-color: rgb(10, 25, 47);
+  color: #fff;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.gitbtn {
+  margin-top: 12px;
+}
+
+.card-user-a:hover,
+.card-user-b:hover,
+.user-repo:hover {
+  box-shadow: 0 0 11px 5px rgba(70, 41, 121, 0.25);
+  background: linear-gradient(-19deg, rgba(235, 174, 8, 0.95) 0px);
+}
+
+.badge > span,
+.user-repo-star {
+  background-color: #ffc107;
+  border-radius: 24px;
+  padding: 7px;
+  margin: 2px;
+}
+
+//repo card
+.container-repos {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-title-repo {
+  width: 825px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  margin: 30px 0 10px 0;
+}
+
+.repos-title > h1 {
+  font-family: "Poppins";
+  font-weight: 700;
+}
+
+.user-repo {
+  width: 825px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff none repeat scroll 0 0;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 11px 5px rgb(103 58 183 / 10%);
+  padding: 20px 10px;
+  margin: 10px 0 10px 0;
+  font-family: "Poppins";
+  font-weight: 600;
+}
+
+.user-repo-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.user-repo-title > h3 {
+  font-family: "Poppins";
+  font-weight: 600;
+  margin: 0;
+}
+
+.user-repo-star > p {
+  margin: 0;
+}
+
+.user-repo-star,
+.user-repo-data,
+.user-repo-language {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-repo-data,
+.user-repo-language {
+  margin-bottom: 8px;
+}
+
+.user-repo-data > p,
+.user-repo-language > p {
+  margin: 0 5px 0 0;
 }
 
 // .search-input {
