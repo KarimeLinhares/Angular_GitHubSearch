@@ -6,11 +6,12 @@ import { Injectable } from '@angular/core';
 export class FavoritesService {
   private storageKey = 'favorites';
 
-  constructor() {}
   addFavorite(username: string): void {
     const favorites = this.getFavorites();
-    favorites.push(username);
-    localStorage.setItem(this.storageKey, JSON.stringify(favorites));
+    if (!favorites.includes(username)) {
+      favorites.push(username);
+      localStorage.setItem(this.storageKey, JSON.stringify(favorites));
+    }
   }
 
   removeFavorite(username: string): void {
@@ -23,8 +24,8 @@ export class FavoritesService {
   }
 
   getFavorites(): string[] {
-    const favorites = localStorage.getItem(this.storageKey);
-    return favorites ? JSON.parse(favorites) : [];
+    const storedFavorites = localStorage.getItem(this.storageKey);
+    return storedFavorites ? JSON.parse(storedFavorites) : [];
   }
 
   isFavorite(username: string): boolean {

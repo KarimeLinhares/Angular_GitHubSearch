@@ -9,6 +9,12 @@
   <div class="container-user">
     <div class="card-user-a">
       <img class="card-img-top" [src]="userProfileImageUrl" alt="My Image" />
+      <button
+        (click)="addFavorite()"
+        [innerText]="
+          isProfileFavorited ? 'Perfil Favoritado' : 'Adicionar aos Favoritos'
+        "
+      ></button>
       <div class="card-body">
         <p class="card-text">
           Nome:<span> {{ userProfileData.name }}</span>

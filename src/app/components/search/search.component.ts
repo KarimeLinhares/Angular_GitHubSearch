@@ -16,9 +16,10 @@ export class SearchComponent implements OnInit {
   searchResult$: Observable<any>;
   userProfileData: any;
   userProfileRepo: any;
+  isProfileFavorited: boolean = false;
   error: any;
   loading: boolean;
-  isFavorite: boolean;
+
   username: string;
   userProfileImageUrl: string;
 
@@ -32,8 +33,10 @@ export class SearchComponent implements OnInit {
     this.fetchUserProfile();
     this.fetchUserTechStack();
     this.fetchUserRepos();
+    this.checkProfileFavorite();
   }
 
+  //user
   fetchUserProfile(): void {
     this.userProfile$ = this.githubService.getUserProfile(this.username);
     this.userProfile$.subscribe(
@@ -44,6 +47,10 @@ export class SearchComponent implements OnInit {
         this.userProfileImageUrl = response.avatar_url;
         this.fetchUserTechStack();
         this.fetchUserRepos();
+        if (this.userProfileData) {
+          const username = this.userProfileData.login;
+          this.isProfileFavorited = this.favoritesService.isFavorite(username);
+        }
       },
       (error) => {
         this.loading = false;
@@ -52,6 +59,23 @@ export class SearchComponent implements OnInit {
     );
   }
 
+  //repos
+  fetchUserRepos(): void {
+    this.userRepos$ = this.githubService.getUserRepos(this.username);
+    this.userRepos$.subscribe(
+      (response) => {
+        this.loading = false;
+        this.userProfileRepo = response;
+        console.log(response);
+      },
+      (error) => {
+        this.loading = false;
+        this.error = error;
+      }
+    );
+  }
+
+  //stacks usadas
   fetchUserTechStack(): void {
     this.githubService.getUserRepos(this.username).subscribe((repos) => {
       const techStackMap = new Map<string, number>();
@@ -73,22 +97,23 @@ export class SearchComponent implements OnInit {
       const sortedTechStack = Array.from(techStackMap.entries()).sort(
         (a, b) => b[1] - a[1]
       );
+
       this.topTechs$ = of(sortedTechStack.slice(0, 5));
     });
   }
 
-  fetchUserRepos(): void {
-    this.userRepos$ = this.githubService.getUserRepos(this.username);
-    this.userRepos$.subscribe(
-      (response) => {
-        this.loading = false;
-        this.userProfileRepo = response;
-        console.log(response);
-      },
-      (error) => {
-        this.loading = false;
-        this.error = error;
-      }
-    );
+  //funcionalidade de favoritos
+  addFavorite(): void {
+    if (this.userProfileData) {
+      this.favoritesService.addFavorite(this.userProfileData.login);
+      this.isProfileFavorited = true;
+    }
+  }
+
+  checkProfileFavorite(): void {
+    if (this.userProfileData) {
+      const username = this.userProfileData.login;
+      this.isProfileFavorited = this.favoritesService.isFavorite(username);
+    }
   }
 }

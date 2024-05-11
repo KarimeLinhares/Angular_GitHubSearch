@@ -16,6 +16,7 @@ import { SearchComponent } from './components/search/search.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InputComponent } from './components/input/input.component';
+import { FavoritosComponent } from './pages/favoritos/favoritos.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { InputComponent } from './components/input/input.component';
     FooterComponent,
     HeaderComponent,
     InputComponent,
+    FavoritosComponent,
   ],
   imports: [
     BrowserModule,
