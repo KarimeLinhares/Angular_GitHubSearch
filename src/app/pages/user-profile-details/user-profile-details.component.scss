@@ -56,10 +56,6 @@
   gap: 8px;
 }
 
-.join {
-  display: flex;
-}
-
 //other cards
 .container-user-cards-about {
   display: flex;
@@ -121,7 +117,7 @@
   background: linear-gradient(-19deg, rgba(235, 174, 8, 0.95) 0px);
 }
 
-.badge > span,
+span,
 .user-repo-star {
   background-color: #ffc107;
   border-radius: 24px;
@@ -188,9 +184,7 @@
   margin: 0;
 }
 
-.user-repo-star,
-.user-repo-data,
-.user-repo-language {
+.user-repo-star {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -199,93 +193,10 @@
 
 .user-repo-data,
 .user-repo-language {
-  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+  gap: 8px;
 }
-
-.user-repo-data > p,
-.user-repo-language > p {
-  margin: 0 5px 0 0;
-}
-
-// .search-input {
-//   display: flex;
-//   justify-content: center;
-//   margin: 20px;
-// }
-
-// input {
-//   border-radius: 24px;
-//   padding: 0.8rem;
-//   min-width: 35rem;
-//   font-size: 18px;
-// }
-
-// input:hover {
-//   outline: none;
-//   box-shadow: 0 0 0 3px black;
-// }
-
-// .card {
-//   background: #fff none repeat scroll 0 0;
-//   border: 2px solid #fff;
-//   border-radius: 5px;
-//   box-shadow: 0 0 11px 5px rgb(103 58 183 / 10%);
-//   margin-bottom: 30px;
-//   padding: 20px 10px;
-//   margin-top: 30px;
-// }
-
-// .card:hover {
-//   box-shadow: 0 0 11px 5px rgba(70, 41, 121, 0.25);
-//   background: linear-gradient(-19deg, rgba(235, 174, 8, 0.95) 0px);
-// }
-
-// .card > a {
-//   text-decoration: none;
-//   color: black;
-// }
-
-// .card-img {
-//   border-radius: 50%;
-//   display: block;
-//   float: none;
-//   height: 215px;
-//   line-height: 32px;
-//   margin: 0 auto;
-//   width: 215px;
-//   margin-top: 6px;
-// }
-
-// mat-card {
-//   background-color: #fff;
-//   border: 1px solid #ebe3d5;
-// }
-
-// mat-card-header {
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   justify-content: center;
-// }
-
-// mat-card-title > a > h2 {
-//   color: black;
-//   font-size: 18px;
-//   margin: 0;
-//   cursor: pointer;
-// }
-// mat-card-title > p {
-//   color: black;
-//   font-size: 12px;
-//   font-weight: 100;
-// }
-
-// mat-card-content > p {
-//   color: black;
-// }
-
-// .mat-button,
-// .mat-icon-button,
-// .mat-stroked-button {
-//   color: black;
-// }

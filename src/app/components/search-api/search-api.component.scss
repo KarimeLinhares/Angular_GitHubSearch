@@ -1,0 +1,80 @@
+.container {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-list {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 30px;
+}
+
+.user {
+  background: #fff none repeat scroll 0 0;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 220px;
+  height: 320px;
+  margin: 30px;
+  box-shadow: 0 0 11px 5px rgb(103 58 183 / 10%);
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.user:hover {
+  box-shadow: 0 0 11px 5px rgba(70, 41, 121, 0.25);
+  background: linear-gradient(-19deg, rgba(235, 174, 8, 0.95) 0px);
+}
+
+.card-img-top {
+  border-radius: 50%;
+  display: block;
+  float: none;
+  height: 120px;
+  line-height: 32px;
+  margin: 16px auto;
+  width: 120px;
+}
+
+.user-name {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  color: black;
+}
+
+.user > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-stacks {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.stacks {
+  list-style: none;
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 16px;
+  margin: 5px;
+}

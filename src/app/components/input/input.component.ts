@@ -14,17 +14,22 @@ import {
 })
 export class InputComponent {
   @Input()
-  type: string;
+  type: string = 'text';
   @Input()
-  ngModelValue: string;
+  placeholder: string = '';
+  @Input()
+  value: string = '';
+  @Output()
+  valueChange: EventEmitter<string> = new EventEmitter<string>();
   @Output()
   ngModelChange: EventEmitter<string> = new EventEmitter<string>();
-  @Input()
-  placeholder: string;
 
   constructor() {}
-  onInputChange(newValue: string) {
-    this.ngModelValue = newValue;
+
+  inputChanged(event: any): void {
+    const newValue = event.target.value;
+    this.value = newValue;
+    this.valueChange.emit(newValue);
     this.ngModelChange.emit(newValue);
   }
 }

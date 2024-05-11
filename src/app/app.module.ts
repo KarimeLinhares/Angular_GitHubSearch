@@ -12,21 +12,23 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SearchComponent } from './components/search/search.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InputComponent } from './components/input/input.component';
 import { FavoritosComponent } from './pages/favoritos/favoritos.component';
+import { SearchApiComponent } from './components/search-api/search-api.component';
+import { UserProfileDetailsComponent } from './pages/user-profile-details/user-profile-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SearchComponent,
     FooterComponent,
     HeaderComponent,
     InputComponent,
     FavoritosComponent,
+    SearchApiComponent,
+    UserProfileDetailsComponent,
   ],
   imports: [
     BrowserModule,

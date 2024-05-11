@@ -1,0 +1,28 @@
+<h1>Coloque o nome do usuário que deseja buscar</h1>
+<app-input
+  type="text"
+  [(ngModel)]="searchQuery"
+  (input)="searchUsers()"
+  placeholder="Digite o nome do usuário"
+></app-input>
+
+<div class="container">
+  <ul class="user-list">
+    <li *ngFor="let user of searchResults" class="user">
+      <img class="card-img-top" [src]="user.avatar_url" alt="My Image" />
+      <a class="user-name" [routerLink]="['/user-profile', user.login]">{{
+        user.login
+      }}</a>
+      <ul class="user-stacks" *ngIf="user.topTechs && user.topTechs.length > 0">
+        <li class="stacks" *ngFor="let tech of user.topTechs">{{ tech }}</li>
+      </ul>
+    </li>
+  </ul>
+  <div
+    class="pagination"
+    *ngIf="searchResults.length > 0 && searchResults.length > 8"
+  >
+    <button *ngIf="currentPage > 1" (click)="previousPage()">Anterior</button>
+    <button (click)="nextPage()">Próxima</button>
+  </div>
+</div>

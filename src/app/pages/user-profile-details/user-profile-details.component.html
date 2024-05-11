@@ -1,0 +1,119 @@
+<div *ngIf="userProfile">
+  <h2>Detalhes do Perfil</h2>
+  <div class="container">
+    <div class="container-user">
+      <div class="card-user-a">
+        <img
+          class="card-img-top"
+          [src]="userProfile.avatar_url"
+          alt="My Image"
+        />
+        <button
+          (click)="addFavorite()"
+          [innerText]="
+            isProfileFavorited ? 'Perfil Favoritado' : 'Adicionar aos Favoritos'
+          "
+        ></button>
+        <div class="card-body">
+          <p>Nome: {{ userProfile.name }}</p>
+          <p>Usuário: {{ userProfile.login }}</p>
+          <p>Seguidores: {{ userProfile.followers }}</p>
+          <p>Seguindo: {{ userProfile.following }}</p>
+          <p>
+            Usuário desde:
+            <span>{{ userProfile.created_at | date }}</span>
+          </p>
+        </div>
+      </div>
+      <div class="container-user-cards-about">
+        <div class="card-user-b">
+          <ul class="items">
+            <li class="list-group-item">Nome: {{ userProfile.name }}</li>
+            <hr />
+            <li class="list-group-item">
+              Endereço: {{ userProfile.location }}
+            </li>
+            <hr />
+            <li class="list-group-item">
+              Repositórios: <span>{{ userProfile.public_repos }}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-user-b">
+          <ul class="items">
+            <li class="list-group-item">Sobre</li>
+            <hr />
+            <li class="list-group-item">
+              <p>{{ userProfile.bio }}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="card-user-b">
+          <ul class="items">
+            <li class="list-group-item">Stacks mais usadas</li>
+            <li class="list-group-item">
+              <div *ngIf="topTechs" class="stacks-container">
+                <div class="stacks">
+                  <ul>
+                    <li *ngFor="let tech of topTechs">
+                      {{ tech[0] }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="card-user-b">
+          <ul class="items">
+            <li class="list-group-item">Github</li>
+            <hr />
+            <li class="list-group-item">
+              <div class="gitbtn">
+                <a
+                  class="btn"
+                  href="https://github.com/{{ userProfile.login }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View Github
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-repos">
+      <div *ngIf="userRepo">
+        <h2>Repositórios do Usuário</h2>
+        <ul>
+          <li *ngFor="let repo of userRepo">
+            <div class="user-repo">
+              <div class="user-repo-title">
+                <h3>{{ repo.name }}</h3>
+                <div class="user-repo-star">
+                  <mat-icon>star</mat-icon>
+                  <p>{{ repo.stargazers_count }}</p>
+                </div>
+              </div>
+              <div class="user-repo-language">
+                <p>Descrição: {{ repo.description }}</p>
+                <p>Linguagem: {{ repo.language }}</p>
+              </div>
+              <div class="user-repo-data">
+                <p>
+                  Criado em: <span>{{ repo.created_at | date }}</span>
+                </p>
+              </div>
+              <p>
+                <a class="btn" href="{{ repo.html_url }}" target="_blank"
+                  >Link do Repositório</a
+                >
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
