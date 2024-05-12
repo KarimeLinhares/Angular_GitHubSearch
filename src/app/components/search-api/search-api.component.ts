@@ -88,6 +88,7 @@ export class SearchApiComponent implements OnInit {
     return this.favoritesService.isFavorite(username);
   }
 
+  //adicionar ou remover favoritos
   addOrRemoveFavorite(username: string): void {
     const user = this.searchResults.find((u) => u.login === username);
     if (user) {

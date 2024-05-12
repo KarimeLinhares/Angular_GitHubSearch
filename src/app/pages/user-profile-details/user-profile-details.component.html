@@ -12,7 +12,15 @@
         <div class="card-body">
           <div class="head">
             <p>Nome: {{ userProfile.name }}</p>
-            <button class="favo" (click)="addFavorite()">
+            <button
+              class="favo"
+              (click)="addOrRemoveFavorite(userProfile.login)"
+              [title]="
+                isProfileFavorited
+                  ? 'Remover dos Favoritos'
+                  : 'Adicionar aos Favoritos'
+              "
+            >
               <mat-icon>{{
                 isProfileFavorited ? "favorite" : "favorite_border"
               }}</mat-icon>

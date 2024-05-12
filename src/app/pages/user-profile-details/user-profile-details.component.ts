@@ -77,14 +77,22 @@ export class UserProfileDetailsComponent implements OnInit {
       });
   }
 
-  //funcionalidade de favoritos
-  addFavorite(): void {
+  // Funcionalidade para adicionar ou remover o perfil dos favoritos
+  addOrRemoveFavorite(username: string): void {
     if (this.userProfile) {
-      this.favoritesService.addFavorite(this.userProfile.login);
-      this.isProfileFavorited = true;
+      if (this.isProfileFavorited) {
+        // Se já estiver favoritado, remova-o dos favoritos
+        this.favoritesService.removeFavorite(username);
+      } else {
+        // Caso contrário, adicione-o aos favoritos
+        this.favoritesService.addFavorite(username);
+      }
+      // Atualize o estado isProfileFavorited para refletir a mudança
+      this.isProfileFavorited = !this.isProfileFavorited;
     }
   }
 
+  // Verifique se o perfil está favoritado
   checkProfileFavorite(): void {
     if (this.userProfile) {
       const username = this.userProfile.login;
