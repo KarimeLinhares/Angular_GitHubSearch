@@ -10,6 +10,11 @@
   <ul class="user-list">
     <li *ngFor="let user of searchResults" class="user">
       <img class="card-img-top" [src]="user.avatar_url" alt="My Image" />
+      <button class="btn" (click)="addFavorite(user.login)">
+        <mat-icon>{{
+          user.isProfileFavorited ? "favorite" : "favorite_border"
+        }}</mat-icon>
+      </button>
       <a class="user-name" [routerLink]="['/user-profile', user.login]">{{
         user.login
       }}</a>

@@ -1,7 +1,29 @@
 <h2>Perfis Favoritados</h2>
 
-<ul>
-  <li *ngFor="let favorito of favoritos">
-    <a [routerLink]="['/user-profile', favorito]"> {{ favorito }}</a>
-  </li>
-</ul>
+<div class="container">
+  <div class="favo-title-container">
+    <ul class="favo-title">
+      <li class="foto-title">Foto</li>
+      <li class="name-title">Nome</li>
+      <li class="local-title">Localização</li>
+      <li>Stacks</li>
+      <li>Favorito</li>
+    </ul>
+  </div>
+
+  <ul class="favo-list">
+    <li *ngFor="let favorito of favoritos" class="favo">
+      <img [src]="favorito.avatar_url" alt="User Avatar" class="user-img" />
+      <a [routerLink]="['/user-profile', favorito.username]">{{
+        favorito.name
+      }}</a>
+      <p>{{ favorito.location }}</p>
+      <ul>
+        <li *ngFor="let tech of favorito.topTechs">{{ tech }}</li>
+      </ul>
+      <button class="btn" (click)="removeFavorite(favorito.username)">
+        Remover dos Favoritos
+      </button>
+    </li>
+  </ul>
+</div>

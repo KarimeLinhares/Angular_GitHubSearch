@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GithubApiService } from 'src/app/service/github-api.service';
+import { FavoritesService } from 'src/app/service/favorites.service';
 
 @Component({
   selector: 'app-search-api',
@@ -13,7 +14,10 @@ export class SearchApiComponent implements OnInit {
   username: string;
   topTechs: any;
 
-  constructor(private githubApiService: GithubApiService) {}
+  constructor(
+    private githubApiService: GithubApiService,
+    private favoritesService: FavoritesService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -29,6 +33,7 @@ export class SearchApiComponent implements OnInit {
               (userRepos: any[]) => {
                 // Chamando o método para obter as três principais tecnologias
                 this.fetchUserTechStack(user.login, userRepos);
+                user.isProfileFavorited = this.checkProfileFavorite(user.login);
               },
               (error: any) => {
                 console.error('Erro ao buscar repositórios do usuário:', error);
@@ -75,5 +80,15 @@ export class SearchApiComponent implements OnInit {
       (a, b) => b[1] - a[1]
     );
     return sortedTechStack.slice(0, limit).map((entry) => entry[0]);
+  }
+
+  checkProfileFavorite(username: string): boolean {
+    // Lógica para verificar se o perfil está favoritado
+    return this.favoritesService.isFavorite(username);
+  }
+
+  addFavorite(username: string): void {
+    // Lógica para adicionar o usuário aos favoritos
+    this.favoritesService.addFavorite(username);
   }
 }

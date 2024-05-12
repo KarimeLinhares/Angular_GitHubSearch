@@ -6,6 +6,15 @@
   padding-bottom: 24px;
 }
 
+h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  font-weight: 700;
+  margin: 24px;
+}
+
 .container-user {
   display: flex;
   flex-direction: row;
@@ -71,6 +80,10 @@
 
 .items > hr {
   color: #dfdfdf;
+}
+
+.card-user-repo > li {
+  margin: 10px 6px 6px 6px;
 }
 
 .about-repos {
@@ -199,4 +212,22 @@ span,
   align-items: center;
   margin: 16px;
   gap: 8px;
+}
+
+.favo {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.head > p {
+  margin: 0;
 }

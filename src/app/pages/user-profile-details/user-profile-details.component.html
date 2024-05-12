@@ -6,16 +6,19 @@
         <img
           class="card-img-top"
           [src]="userProfile.avatar_url"
-          alt="My Image"
+          alt="User Image"
         />
-        <button
-          (click)="addFavorite()"
-          [innerText]="
-            isProfileFavorited ? 'Perfil Favoritado' : 'Adicionar aos Favoritos'
-          "
-        ></button>
+
         <div class="card-body">
-          <p>Nome: {{ userProfile.name }}</p>
+          <div class="head">
+            <p>Nome: {{ userProfile.name }}</p>
+            <button class="favo" (click)="addFavorite()">
+              <mat-icon>{{
+                isProfileFavorited ? "favorite" : "favorite_border"
+              }}</mat-icon>
+            </button>
+          </div>
+
           <p>Usuário: {{ userProfile.login }}</p>
           <p>Seguidores: {{ userProfile.followers }}</p>
           <p>Seguindo: {{ userProfile.following }}</p>
@@ -28,35 +31,35 @@
       <div class="container-user-cards-about">
         <div class="card-user-b">
           <ul class="items">
-            <li class="list-group-item">Nome: {{ userProfile.name }}</li>
+            <li>Nome: {{ userProfile.name }}</li>
             <hr />
-            <li class="list-group-item">
-              Endereço: {{ userProfile.location }}
-            </li>
+            <li>Endereço: {{ userProfile.location }}</li>
             <hr />
-            <li class="list-group-item">
-              Repositórios: <span>{{ userProfile.public_repos }}</span>
-            </li>
+            <div class="card-user-repo">
+              <li>
+                Repositórios: <span>{{ userProfile.public_repos }}</span>
+              </li>
+            </div>
           </ul>
         </div>
         <div class="card-user-b">
           <ul class="items">
-            <li class="list-group-item">Sobre</li>
+            <li>Sobre</li>
             <hr />
-            <li class="list-group-item">
+            <li>
               <p>{{ userProfile.bio }}</p>
             </li>
           </ul>
         </div>
         <div class="card-user-b">
           <ul class="items">
-            <li class="list-group-item">Stacks mais usadas</li>
-            <li class="list-group-item">
+            <li>Stacks mais usadas</li>
+            <li>
               <div *ngIf="topTechs" class="stacks-container">
                 <div class="stacks">
                   <ul>
                     <li *ngFor="let tech of topTechs">
-                      {{ tech[0] }}
+                      {{ tech[0] | uppercase }}
                     </li>
                   </ul>
                 </div>
@@ -66,9 +69,9 @@
         </div>
         <div class="card-user-b">
           <ul class="items">
-            <li class="list-group-item">Github</li>
+            <li>Github</li>
             <hr />
-            <li class="list-group-item">
+            <li>
               <div class="gitbtn">
                 <a
                   class="btn"

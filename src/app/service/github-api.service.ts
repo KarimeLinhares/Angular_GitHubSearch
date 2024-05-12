@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 })
 export class GithubApiService {
   apiUrl: string = 'https://api.github.com';
-  apiKey: string = '';
+  apiKey: string = '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';
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
     Authorization: `Bearer ${this.apiKey}`,

@@ -1,3 +1,11 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  margin: 16px;
+  font-family: "Poppins";
+  font-weight: 700;
+}
+
 .container {
   width: 80%;
   margin: auto;
@@ -77,4 +85,14 @@
   border: 1px solid black;
   border-radius: 16px;
   margin: 5px;
+}
+
+.btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  margin: 8px;
 }
