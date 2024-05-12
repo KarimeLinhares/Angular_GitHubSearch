@@ -33,6 +33,7 @@ export class SearchApiComponent implements OnInit {
               (userRepos: any[]) => {
                 // Chamando o método para obter as três principais tecnologias
                 this.fetchUserTechStack(user.login, userRepos);
+                // Verificar se o perfil está favoritado
                 user.isProfileFavorited = this.checkProfileFavorite(user.login);
               },
               (error: any) => {
@@ -87,8 +88,18 @@ export class SearchApiComponent implements OnInit {
     return this.favoritesService.isFavorite(username);
   }
 
-  addFavorite(username: string): void {
-    // Lógica para adicionar o usuário aos favoritos
-    this.favoritesService.addFavorite(username);
+  addOrRemoveFavorite(username: string): void {
+    const user = this.searchResults.find((u) => u.login === username);
+    if (user) {
+      if (user.isProfileFavorited) {
+        // Se já estiver favoritado, remova-o dos favoritos
+        this.favoritesService.removeFavorite(username);
+      } else {
+        // Caso contrário, adicione-o aos favoritos
+        this.favoritesService.addFavorite(username);
+      }
+      // Atualize o estado isProfileFavorited para refletir a mudança
+      user.isProfileFavorited = !user.isProfileFavorited;
+    }
   }
 }
