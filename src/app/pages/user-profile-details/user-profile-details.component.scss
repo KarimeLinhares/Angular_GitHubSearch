@@ -25,6 +25,7 @@ h2 {
 .card-user-a,
 .card-user-b {
   width: 400px;
+  position: relative;
   background: #fff none repeat scroll 0 0;
   border: 2px solid #fff;
   border-radius: 5px;
@@ -139,41 +140,38 @@ span,
 }
 
 //repo card
-.container-repos {
+.card-repos-data {
+  margin: auto;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  padding: 0 30px 30px 30px;
 }
 
-.card-title-repo {
-  width: 825px;
+.user-repos {
+  margin: auto;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 20px 10px;
-  margin: 30px 0 10px 0;
-}
-
-.repos-title > h1 {
-  font-family: "Poppins";
-  font-weight: 700;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 30px;
 }
 
 .user-repo {
-  width: 825px;
+  width: 350px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
   background: #fff none repeat scroll 0 0;
   border: 2px solid #fff;
   border-radius: 5px;
   box-shadow: 0 0 11px 5px rgb(103 58 183 / 10%);
   padding: 20px 10px;
-  margin: 10px 0 10px 0;
+  margin: 10px;
   font-family: "Poppins";
   font-weight: 600;
 }
@@ -183,7 +181,7 @@ span,
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
   margin-bottom: 16px;
 }
 
@@ -191,6 +189,7 @@ span,
   font-family: "Poppins";
   font-weight: 600;
   margin: 0;
+  text-align: center;
 }
 
 .user-repo-star > p {
@@ -212,22 +211,15 @@ span,
   align-items: center;
   margin: 16px;
   gap: 8px;
+  text-align: center;
 }
 
 .favo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 32px;
   cursor: pointer;
   background-color: transparent;
   border: none;
-}
-
-.head {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.head > p {
-  margin: 0;
 }

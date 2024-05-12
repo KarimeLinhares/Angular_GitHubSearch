@@ -8,23 +8,22 @@
           [src]="userProfile.avatar_url"
           alt="User Image"
         />
-
+        <button
+          class="favo"
+          (click)="addOrRemoveFavorite(userProfile.login)"
+          [title]="
+            isProfileFavorited
+              ? 'Remover dos Favoritos'
+              : 'Adicionar aos Favoritos'
+          "
+        >
+          <mat-icon>{{
+            isProfileFavorited ? "favorite" : "favorite_border"
+          }}</mat-icon>
+        </button>
         <div class="card-body">
           <div class="head">
             <p>Nome: {{ userProfile.name }}</p>
-            <button
-              class="favo"
-              (click)="addOrRemoveFavorite(userProfile.login)"
-              [title]="
-                isProfileFavorited
-                  ? 'Remover dos Favoritos'
-                  : 'Adicionar aos Favoritos'
-              "
-            >
-              <mat-icon>{{
-                isProfileFavorited ? "favorite" : "favorite_border"
-              }}</mat-icon>
-            </button>
           </div>
 
           <p>Usuário: {{ userProfile.login }}</p>
@@ -94,36 +93,38 @@
         </div>
       </div>
     </div>
-    <div class="card-repos">
+    <div class="card-repos-container">
       <div *ngIf="userRepo">
         <h2>Repositórios do Usuário</h2>
-        <ul>
-          <li *ngFor="let repo of userRepo">
-            <div class="user-repo">
-              <div class="user-repo-title">
-                <h3>{{ repo.name }}</h3>
-                <div class="user-repo-star">
-                  <mat-icon>star</mat-icon>
-                  <p>{{ repo.stargazers_count }}</p>
+        <div class="card-repos-data">
+          <ul class="user-repos">
+            <li *ngFor="let repo of userRepo">
+              <div class="user-repo">
+                <div class="user-repo-title">
+                  <h3>{{ repo.name }}</h3>
+                  <div class="user-repo-star">
+                    <mat-icon>star</mat-icon>
+                    <p>{{ repo.stargazers_count }}</p>
+                  </div>
                 </div>
-              </div>
-              <div class="user-repo-language">
-                <p>Descrição: {{ repo.description }}</p>
-                <p>Linguagem: {{ repo.language }}</p>
-              </div>
-              <div class="user-repo-data">
+                <div class="user-repo-language">
+                  <p>Descrição: {{ repo.description }}</p>
+                  <p>Linguagem: {{ repo.language }}</p>
+                </div>
+                <div class="user-repo-data">
+                  <p>
+                    Criado em: <span>{{ repo.created_at | date }}</span>
+                  </p>
+                </div>
                 <p>
-                  Criado em: <span>{{ repo.created_at | date }}</span>
+                  <a class="btn" href="{{ repo.html_url }}" target="_blank"
+                    >Link do Repositório</a
+                  >
                 </p>
               </div>
-              <p>
-                <a class="btn" href="{{ repo.html_url }}" target="_blank"
-                  >Link do Repositório</a
-                >
-              </p>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
