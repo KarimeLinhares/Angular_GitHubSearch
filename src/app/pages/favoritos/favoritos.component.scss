@@ -106,3 +106,34 @@ h2 {
   cursor: pointer;
   width: 70px;
 }
+
+@media (max-width: 400px) {
+  .favo-title-container,
+  .favo-list {
+    width: 100%;
+  }
+  .favo-title,
+  .favo {
+    height: 50px;
+    font-size: 10px;
+    padding: 10px;
+  }
+  .user-img {
+    width: 24px;
+    height: 24px;
+  }
+  .favo > a,
+  .favo > p,
+  .favo > ul > li {
+    font-size: 6px;
+  }
+
+  .favo > ul > li {
+    height: 16px;
+  }
+  .btn {
+    width: 50px;
+    font-size: 6px;
+    padding: 4px;
+  }
+}

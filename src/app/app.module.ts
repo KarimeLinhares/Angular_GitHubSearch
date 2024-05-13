@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,6 +46,7 @@ import { UserProfileDetailsComponent } from './pages/user-profile-details/user-p
     MatInputModule,
     MatMenuModule,
     MatTableModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

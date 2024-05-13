@@ -4,8 +4,16 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="['']">Home</button>
-      <button mat-menu-item routerLink="/favoritos">Meus Favoritos</button>
+      <button title="Acessar a página Home" mat-menu-item [routerLink]="['']">
+        Home
+      </button>
+      <button
+        title="Acessar a página Meus Favoritos"
+        mat-menu-item
+        routerLink="/favoritos"
+      >
+        Meus Favoritos
+      </button>
     </mat-menu>
     <h1>GitFind2.0</h1>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { GithubApiService } from 'src/app/service/github-api.service';
 import { FavoritesService } from 'src/app/service/favorites.service';
 
@@ -16,7 +16,8 @@ export class SearchApiComponent implements OnInit {
 
   constructor(
     private githubApiService: GithubApiService,
-    private favoritesService: FavoritesService
+    private favoritesService: FavoritesService,
+    private elementRef: ElementRef
   ) {}
 
   ngOnInit(): void {}
@@ -52,12 +53,22 @@ export class SearchApiComponent implements OnInit {
   nextPage(): void {
     this.currentPage++;
     this.searchUsers();
+    this.scrollToTop();
   }
   previousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.searchUsers();
+      this.scrollToTop();
     }
+  }
+
+  scrollToTop(): void {
+    // Use o elemento nativo para rolar a página para o topo
+    this.elementRef.nativeElement.ownerDocument.defaultView.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }
 
   //stacks mais usadas

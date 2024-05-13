@@ -96,3 +96,44 @@ h1 {
   border: none;
   margin: 8px;
 }
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.pagination > button {
+  width: 80px;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  color: black;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.pagination > button:hover {
+  background-color: #ffc107;
+  box-shadow: 0 0 0 3px black;
+}
+
+@media (max-width: 400px) {
+  h1 {
+    text-align: center;
+  }
+  .user {
+    height: 280px;
+  }
+  .user-name {
+    font-size: 10px;
+  }
+  .stacks {
+    width: 70px;
+    font-size: 10px;
+  }
+}

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +33,7 @@ export class GithubApiService {
     return this.http.get(url, { headers: this.headers });
   }
 
+  //busca as stacks dos repositórios
   getUserTechStack(repos: any[]) {
     const techStack: { [key: string]: number } = {};
 

@@ -39,10 +39,10 @@ export class UserProfileDetailsComponent implements OnInit {
       (userProfile: any) => {
         this.userProfile = userProfile;
         console.log(userProfile);
-        //checa se o perfil está favoritado
+
         if (this.userProfile) {
-          const username = this.userProfile.login;
-          this.isProfileFavorited = this.favoritesService.isFavorite(username);
+          const userLogin = this.userProfile.login;
+          this.isProfileFavorited = this.favoritesService.isFavorite(userLogin);
         }
       },
       (error: any) => {

@@ -223,3 +223,31 @@ span,
   background-color: transparent;
   border: none;
 }
+
+@media (max-width: 400px) {
+  h2 {
+    margin: 24px 12px 12px 12px;
+  }
+  .container-user {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 16px;
+  }
+  .container-user-cards-about {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0;
+  }
+  .card-user-b {
+    width: 100%;
+  }
+  .user-repos {
+    padding: 0;
+  }
+}

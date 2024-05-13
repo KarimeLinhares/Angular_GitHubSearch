@@ -15,3 +15,9 @@ input:hover {
   outline: none;
   box-shadow: 0 0 0 3px black;
 }
+
+@media (max-width: 400px) {
+  input {
+    min-width: 20rem;
+  }
+}

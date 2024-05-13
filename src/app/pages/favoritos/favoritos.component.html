@@ -14,9 +14,11 @@
   <ul class="favo-list">
     <li *ngFor="let favorito of favoritos" class="favo">
       <img [src]="favorito.avatar_url" alt="User Avatar" class="user-img" />
-      <a [routerLink]="['/user-profile', favorito.username]">{{
-        favorito.name
-      }}</a>
+      <a
+        title="Vá para o perfil do usuário"
+        [routerLink]="['/user-profile', favorito.username]"
+        >{{ favorito.name }}</a
+      >
       <p>{{ favorito.location }}</p>
       <ul>
         <li *ngFor="let tech of favorito.topTechs">{{ tech }}</li>

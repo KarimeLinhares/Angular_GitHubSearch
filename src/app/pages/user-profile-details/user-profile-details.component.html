@@ -85,6 +85,7 @@
                   href="https://github.com/{{ userProfile.login }}"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Vá para o perfil do usuário no github"
                   >View Github
                 </a>
               </div>
@@ -117,7 +118,11 @@
                   </p>
                 </div>
                 <p>
-                  <a class="btn" href="{{ repo.html_url }}" target="_blank"
+                  <a
+                    title="Vá para o repositório no github"
+                    class="btn"
+                    href="{{ repo.html_url }}"
+                    target="_blank"
                     >Link do Repositório</a
                   >
                 </p>

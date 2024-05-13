@@ -35,7 +35,13 @@
     class="pagination"
     *ngIf="searchResults.length > 0 && searchResults.length > 8"
   >
-    <button *ngIf="currentPage > 1" (click)="previousPage()">Anterior</button>
-    <button (click)="nextPage()">Próxima</button>
+    <button
+      title="Página Anterior"
+      *ngIf="currentPage > 1"
+      (click)="previousPage()"
+    >
+      Anterior
+    </button>
+    <button title="Próxima Página" (click)="nextPage()">Próxima</button>
   </div>
 </div>
